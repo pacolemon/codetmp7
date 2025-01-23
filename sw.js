@@ -84,7 +84,7 @@ self.addEventListener('message', async function(e) {
 
 self.addEventListener('install', function(event) {
   let urls = [
-    '/',
+    '/codetmp7/',
   ];
  
   event.waitUntil(Promise.all([
@@ -164,7 +164,7 @@ function relinkMissingPort() {
       let hasClient = false;
       if (clients && clients.length) {
         for (let client of clients) {
-          if(client.url == location.origin+'/') {
+          if(client.url == location.origin+'/codetmp7/') {
             hasClient = true;
             isRelinkingMessagePort = true;
             client.postMessage({ message: 'port-missing' });
@@ -223,7 +223,7 @@ function responseByFetch(e, resolve) {
 self.addEventListener('fetch', function(e) {
 
   let reqUrl = new URL(e.request.url);
-  if (reqUrl.pathname == '/') {
+  if (reqUrl.pathname == '/codetmp7/') {
     e.respondWith(
       caches.match(e.request).then(function(resp) {
         if (resp) {
